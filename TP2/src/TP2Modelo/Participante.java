@@ -4,10 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Participante {
-	private String nombre; // private todo
-	// sumar puntos
+	public String nombre; 
 	private String apellido;
-	private int id;
+	public int id;
 	private int cantPuntos = 0;
 	LocalDate fechaIns;
 	private ArrayList<Concurso> listConcurso = new ArrayList<Concurso>();
@@ -21,11 +20,11 @@ public class Participante {
 		this.fechaIns = LocalDate.now();
 	}
 
-	public int getCantPuntos() {
-		return cantPuntos;
-	}
-
 	public void sumarPuntos() {
 		this.cantPuntos = +10;
+	}
+	
+	public int obtenerId() {
+		return id;
 	}
 }

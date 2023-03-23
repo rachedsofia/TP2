@@ -9,13 +9,21 @@ public class Concurso {
 	private LocalDate fechaDesde;
 	private LocalDate fechaHasta;
 	private ArrayList<Participante> listParticipante = new ArrayList<Participante>();
+	RegistroInscripcion registroInscipcion;
+	public int id; 
+	
 
-	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta) {
+	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta,int id, RegistroInscripcion registro) {
 		this.nombreConcurso = nombre;
 		this.fechaDesde = fechaDesde;
 		this.fechaHasta = fechaHasta;
+		this.id = id; 
+		this.registroInscipcion = registro;
 	}
 
+	public int obtenerId() {
+		return id;
+	}
 	public boolean yaInscripto(Participante participante) {
 		return listParticipante.contains(participante);
 	}
@@ -37,10 +45,11 @@ public class Concurso {
 			participante.inscripto = true;
 			this.agregarParticipante(participante);
 		}
+		
+		this.registroInscipcion.registrar(LocalDate.now(),participante.obtenerId(),this.obtenerId()); 
 	}
 
 	public void agregarParticipante(Participante unParticipante) {
 		this.listParticipante.add(unParticipante);
 	}
-
 }
