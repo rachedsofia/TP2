@@ -20,7 +20,7 @@ public class Concurso {
 		this.id = id; 
 		this.registroInscipcion = registro;
 	}
-
+	
 	public int obtenerId() {
 		return id;
 	}
