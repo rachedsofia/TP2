@@ -1,4 +1,4 @@
-package EnDiscoRegistroInscripcion;
+package TP2_Persistencia;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.time.LocalDate;
-import TP2Modelo.RegistroInscripcion;
+
+import TP2_Modelo.RegistroInscripcion;
 
 public class DiscoRegistroInscripcion implements RegistroInscripcion {
 
