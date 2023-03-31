@@ -46,7 +46,7 @@ public class InscripcionTest {
 
 		LocalDate fechaA = LocalDate.of(2023, 03, 07);
 		LocalDate fechaB = LocalDate.of(2023, 03, 10);
-		RegistroInscripcion registrarA = new BaseRegistrarInscripcion();
+		RegistroInscripcion registrarA = new BaseRegistrarInscripcion("jdbc:mysql://127.0.0.1/poo_tp2-3","root", "");
 		
 		Concurso concursoPoderJudicialA = new Concurso("Poder Judicial", fechaA, fechaB,1,registrarA);
 		Concurso concursoPoderJudicial1B = new Concurso("Poder Judicial", fechaA, fechaB,2,registrarA);

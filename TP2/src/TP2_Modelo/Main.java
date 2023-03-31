@@ -20,7 +20,6 @@ public class Main {
 		Concurso concursoTecno = new Concurso("Tecnología", fecha1, fecha2,1,registrar);
 
 		concursoTecno.inscribirParticipante(participante1);
-
 		System.out.println("EN BASE DE DATOS");
 
 		String fechaF21 = "2023-03-30";
@@ -30,7 +29,7 @@ public class Main {
 		
 		Participante participante11 = new Participante("Sofia", "Rached", 44122180);
 		
-		RegistroInscripcion registrar1 = new BaseRegistrarInscripcion();
+		RegistroInscripcion registrar1 = new BaseRegistrarInscripcion("jdbc:mysql://127.0.0.1/poo_tp2-3","root", "");
 		
 		Concurso concursoTecno1 = new Concurso("Tecnología", fecha11, fecha21,1,registrar1);
 

@@ -1,7 +1,7 @@
 package TP2_Modelo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+
 
 public class Participante {
 	public String nombre; 
@@ -9,7 +9,6 @@ public class Participante {
 	public int id;
 	private int cantPuntos = 0;
 	LocalDate fechaIns;
-	private ArrayList<Concurso> listConcurso = new ArrayList<Concurso>();
 
 	public boolean inscripto = false;
 
