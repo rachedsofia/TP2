@@ -10,6 +10,7 @@ public class Concurso {
 	private LocalDate fechaHasta;
 	private ArrayList<Participante> listParticipante = new ArrayList<Participante>();
 	RegistroInscripcion registroInscipcion;
+	MandarMail mandarMail;
 	private String correo = "msofiarached@gmail.com";
 	public int id;
 
@@ -19,6 +20,14 @@ public class Concurso {
 		this.fechaHasta = fechaHasta;
 		this.id = id;
 		this.registroInscipcion = registro;
+	}
+
+	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta, int id, MandarMail mail) {
+		this.nombreConcurso = nombre;
+		this.fechaDesde = fechaDesde;
+		this.fechaHasta = fechaHasta;
+		this.id = id;
+		this.mandarMail = mail;
 	}
 
 	public int obtenerId() {
@@ -47,8 +56,7 @@ public class Concurso {
 		}
 
 		this.registroInscipcion.registrar(LocalDate.now(), participante.obtenerId(), this.obtenerId());
-		new MandarMail(this.correo, "Inscripcion a " + this.obtenerNombre(),
-				"Pudo inscribirse al " + this.obtenerNombre() + " Correctamente");
+//		this.mandarMail.mandar(correo, nombreConcurso, nombreConcurso);
 
 	}
 

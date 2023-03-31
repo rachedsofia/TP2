@@ -34,21 +34,6 @@ public class Main {
 		Concurso concursoTecno1 = new Concurso("Tecnología", fecha11, fecha21, 1, registrar1);
 
 		concursoTecno1.inscribirParticipante(participante11);
-
-		System.out.println("EN MAILTRAP");
-//		String fechaA = "2023-03-30";
-//		
-//		LocalDate fechaB = LocalDate.now();
-//		LocalDate fechaC = LocalDate.parse(fechaA);
-//		
-//		Participante participanteA = new Participante("Sofia", "Rached", 44122180);
-
-//		NotificarInscripcion registrarA = new NotificarInscripcionEmail();
-
-//		Concurso concursoTecnoA = new Concurso("Tecnología", fechaB, fechaC,1,registrarA);
-//
-//		concursoTecnoA.inscribirParticipante(participanteA);
-
 	}
 
 }
