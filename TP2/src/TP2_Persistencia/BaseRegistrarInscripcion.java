@@ -32,7 +32,7 @@ public class BaseRegistrarInscripcion implements RegistroInscripcion {
 				statement.setInt(3, id_Concurso);
 				statement.executeUpdate();
 	} catch (Exception e) {
-			e.printStackTrace();
+		throw new RuntimeException(e);
 		}
 	}
 }

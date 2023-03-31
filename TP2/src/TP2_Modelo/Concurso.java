@@ -10,34 +10,26 @@ public class Concurso {
 	private LocalDate fechaHasta;
 	private ArrayList<Participante> listParticipante = new ArrayList<Participante>();
 	RegistroInscripcion registroInscipcion;
-	NotificarInscripcion notificarInscripcion; 
-	public int id; 
-	
+	private String correo = "msofiarached@gmail.com";
+	public int id;
 
-	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta,int id, RegistroInscripcion registro) {
+	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta, int id, RegistroInscripcion registro) {
 		this.nombreConcurso = nombre;
 		this.fechaDesde = fechaDesde;
 		this.fechaHasta = fechaHasta;
-		this.id = id; 
+		this.id = id;
 		this.registroInscipcion = registro;
-	}
-	
-	public Concurso(String nombre, LocalDate fechaB, LocalDate fechaC, int id2, NotificarInscripcion registrarA) {
-		this.nombreConcurso = nombre;
-		this.fechaDesde = fechaB;
-		this.fechaHasta = fechaC;
-		this.id = id2; 
-		this.notificarInscripcion = registrarA;
 	}
 
 	public int obtenerId() {
 		return id;
 	}
+
 	public boolean yaInscripto(Participante participante) {
 		return listParticipante.contains(participante);
 	}
 
-	public boolean inscribePrimerDia() {
+	private boolean inscribePrimerDia() {
 		LocalDate fechaInscripcion = LocalDate.now();
 		return fechaDesde.equals(fechaInscripcion);
 	}
@@ -50,15 +42,21 @@ public class Concurso {
 		if ((!yaInscripto(participante)) && ((inscribePrimerDia()))) {
 			participante.sumarPuntos();
 		}
-		if (sePuedeInscribir(participante) == true) {
-			participante.inscripto = true;
+		if (sePuedeInscribir(participante)) {
 			this.agregarParticipante(participante);
 		}
-		
-		this.registroInscipcion.registrar(LocalDate.now(),participante.obtenerId(),this.obtenerId()); 
+
+		this.registroInscipcion.registrar(LocalDate.now(), participante.obtenerId(), this.obtenerId());
+		new MandarMail(this.correo, "Inscripcion a " + this.obtenerNombre(),
+				"Pudo inscribirse al " + this.obtenerNombre() + " Correctamente");
+
 	}
 
 	public void agregarParticipante(Participante unParticipante) {
 		this.listParticipante.add(unParticipante);
+	}
+
+	String obtenerNombre() {
+		return this.nombreConcurso;
 	}
 }
