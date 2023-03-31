@@ -10,6 +10,7 @@ public class Concurso {
 	private LocalDate fechaHasta;
 	private ArrayList<Participante> listParticipante = new ArrayList<Participante>();
 	RegistroInscripcion registroInscipcion;
+	NotificarInscripcion notificarInscripcion; 
 	public int id; 
 	
 
@@ -21,6 +22,14 @@ public class Concurso {
 		this.registroInscipcion = registro;
 	}
 	
+	public Concurso(String nombre, LocalDate fechaB, LocalDate fechaC, int id2, NotificarInscripcion registrarA) {
+		this.nombreConcurso = nombre;
+		this.fechaDesde = fechaB;
+		this.fechaHasta = fechaC;
+		this.id = id2; 
+		this.notificarInscripcion = registrarA;
+	}
+
 	public int obtenerId() {
 		return id;
 	}

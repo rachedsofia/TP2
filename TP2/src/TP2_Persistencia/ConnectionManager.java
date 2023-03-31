@@ -1,6 +1,7 @@
 package TP2_Persistencia;
 
 import java.util.Properties;
+
 import java.util.ResourceBundle;
 
 public class ConnectionManager {
