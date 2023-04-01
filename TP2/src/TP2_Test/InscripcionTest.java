@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import TP2_Modelo.Concurso;
 import TP2_Modelo.Participante;
 import TP2_Modelo.RegistroInscripcion;
-import TP2_Persistencia.ObjetoDeMentira;
 
 public class InscripcionTest {
 	@Test
@@ -21,7 +20,7 @@ public class InscripcionTest {
 		LocalDate fecha3 = LocalDate.of(2023, 03, 07);
 		LocalDate fecha4 = LocalDate.of(2023, 03, 10);
 //		RegistroInscripcion registrar = new DiscoRegistroInscripcion("C:\\Users\\msofi\\OneDrive\\EscritorioTP2-Reg.txt");
-		RegistroInscripcion registrar = new ObjetoDeMentira();
+		RegistroInscripcion registrar = new FakeRegistroInscripcion();
 //		ObjetoDeMentira registrar = new ObjetoDeMentira(); ANDA CON EL ASSERT COMENTADO
 		Concurso concursoPoderJudicial = new Concurso("Poder Judicial", fecha3, fecha4, 1, registrar);
 		Concurso concursoPoderJudicial1 = new Concurso("Poder Judicial", fecha3, fecha4, 2, registrar);
@@ -50,7 +49,7 @@ public class InscripcionTest {
 		LocalDate fechaA = LocalDate.of(2023, 03, 07);
 		LocalDate fechaB = LocalDate.of(2023, 03, 10);
 //		RegistroInscripcion registrarA = new BaseRegistrarInscripcion("jdbc:mysql://127.0.0.1/poo_tp2-3", "root", "");
-		RegistroInscripcion registrarA = new ObjetoDeMentira();
+		RegistroInscripcion registrarA = new FakeRegistroInscripcion();
 //		ObjetoDeMentira registrarA = new ObjetoDeMentira(); ANDA CON EL ASSERT COMENTADO
 		Concurso concursoPoderJudicialA = new Concurso("Poder Judicial", fechaA, fechaB, 1, registrarA);
 		Concurso concursoPoderJudicial1B = new Concurso("Poder Judicial", fechaA, fechaB, 2, registrarA);

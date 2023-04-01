@@ -1,10 +1,10 @@
-package TP2_Persistencia;
+package TP2_Test;
 
 import java.time.LocalDate;
 
 import TP2_Modelo.RegistroInscripcion;
 
-public class ObjetoDeMentira implements RegistroInscripcion {
+public class FakeRegistroInscripcion implements RegistroInscripcion {
 	// variables para comparar los valores
 	int idParti;
 	int idConcu;

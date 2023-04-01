@@ -55,8 +55,9 @@ public class Concurso {
 			this.agregarParticipante(participante);
 		}
 
-		this.registroInscipcion.registrar(LocalDate.now(), participante.obtenerId(), this.obtenerId());
-//		this.mandarMail.mandar(correo, nombreConcurso, nombreConcurso);
+		// this.registroInscipcion.registrar(LocalDate.now(), participante.obtenerId(),
+		// this.obtenerId());
+		this.mandarMail.mandar(correo, nombreConcurso, nombreConcurso);
 
 	}
 

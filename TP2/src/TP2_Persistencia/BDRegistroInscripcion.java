@@ -7,12 +7,12 @@ import java.time.LocalDate;
 
 import TP2_Modelo.RegistroInscripcion;
 
-public class BaseRegistrarInscripcion implements RegistroInscripcion {
+public class BDRegistroInscripcion implements RegistroInscripcion {
 	String url; 
 	String user;
 	String password; 
 	 
-	public BaseRegistrarInscripcion(String url,	String user, String password) {
+	public BDRegistroInscripcion(String url,	String user, String password) {
 		if(url == null || user == null || password == null) {
 			throw new RuntimeException("Faltan datos");
 		}
