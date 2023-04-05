@@ -1,33 +1,25 @@
 package TP2_Modelo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Concurso {
 
 	private String nombreConcurso;
 	private LocalDate fechaDesde;
 	private LocalDate fechaHasta;
-	private ArrayList<Participante> listParticipante = new ArrayList<Participante>();
+	private List<Participante> participantes;
 	RegistroInscripcion registroInscipcion;
 	Mandar mandarMail;
-	private String correo = "msofiarached@gmail.com";
 	public int id;
-	private boolean inscripto;
 
-	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta, int id, RegistroInscripcion registro) {
+	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta, int id, RegistroInscripcion registro,
+			Mandar mail) {
 		this.nombreConcurso = nombre;
 		this.fechaDesde = fechaDesde;
 		this.fechaHasta = fechaHasta;
 		this.id = id;
 		this.registroInscipcion = registro;
-	}
-
-	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta, int id, Mandar mail) {
-		this.nombreConcurso = nombre;
-		this.fechaDesde = fechaDesde;
-		this.fechaHasta = fechaHasta;
-		this.id = id;
 		this.mandarMail = mail;
 	}
 
@@ -36,7 +28,7 @@ public class Concurso {
 	}
 
 	public boolean yaInscripto(Participante participante) {
-		return listParticipante.contains(participante);
+		return this.participantes.stream().anyMatch(p -> participante.equals(p));
 	}
 
 	private boolean inscribePrimerDia() {
@@ -53,18 +45,12 @@ public class Concurso {
 			participante.sumarPuntos();
 		}
 		if (sePuedeInscribir(participante)) {
-			this.inscripto = true;
-			this.agregarParticipante(participante);
+			this.participantes.add(participante);
 		}
-
 		this.registroInscipcion.registrar(LocalDate.now(), participante.obtenerId(), this.obtenerId());
 		this.mandarMail.notificacionConcurso("Concurso:" + this.obtenerId(),
 				"Se cargo el participante " + participante.obtenerId() + " en la fecha " + LocalDate.now());
 
-	}
-
-	public void agregarParticipante(Participante unParticipante) {
-		this.listParticipante.add(unParticipante);
 	}
 
 	String obtenerNombre() {

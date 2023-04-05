@@ -2,51 +2,34 @@ package TP2_Modelo;
 
 import java.time.LocalDate;
 
-import TP2_Test.FakeRegistroInscripcion;
+import TP2_Persistencia.BDRegistroInscripcion;
+import TP2_Test.FakeMandarMail;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("EN DISCO");
-		String fechaF2 = "2023-03-30";
+		LocalDate fechaC = LocalDate.now();
+		LocalDate fechaD = LocalDate.of(2023, 4, 25);
 
-		LocalDate fecha1 = LocalDate.now();
-		LocalDate fecha2 = LocalDate.parse(fechaF2);
+		// RegistroInscripcion registar = new
+		// DiscoRegistroInscripcion("C:\\Users\\msofi\\OneDrive\\EscritorioTP2-Reg.txt");
 
-		Participante participante1 = new Participante("Sofia", "Rached", 44122180);
+		// Punto 3
+		RegistroInscripcion registar = new BDRegistroInscripcion("jdbc:mysql://127.0.0.1/poo_tp2-3", "root", "");
+		// Punto 4
+		// Mandar notificar = new EnEmail("from@example.com", "tom@example.com",
+		// "b78c9f4878db7f", "b4f74a52b601e4",
+		// "sandbox.smtp.mailtrap.io");
 
-//		RegistroInscripcion registrar = new DiscoRegistroInscripcion("C:\\Users\\msofi\\OneDrive\\Escritorio\\Prueba.txt");
-		RegistroInscripcion registrar = new FakeRegistroInscripcion();
-		Concurso concursoTecno = new Concurso("Tecnología", fecha1, fecha2, 1, registrar);
+		// Punto 5
+		// Mandar notificar = new Mandar("from@example.com", "tom@example.com",
+		// "b78c9f4878db7f", "b4f74a52b601e4",
+//				"sandbox.smtp.mailtrap.io");
+		FakeMandarMail notificar = new FakeMandarMail("from@example.com", "tom@example.com", "b78c9f4878db7f",
+				"b4f74a52b601e4", "sandbox.smtp.mailtrap.io");
+		Concurso concursoPoderJudicialA = new Concurso("Poder Judicial", fechaC, fechaD, 1, registar, notificar);
 
-		concursoTecno.inscribirParticipante(participante1);
+		Participante participanteC = new Participante("Sofia", "Rached", 44122980);
+		concursoPoderJudicialA.inscribirParticipante(participanteC);
 
-		System.out.println("EN BASE DE DATOS");
-
-		String fechaF21 = "2023-03-30";
-
-		LocalDate fecha11 = LocalDate.now();
-		LocalDate fecha21 = LocalDate.parse(fechaF21);
-
-		Participante participante11 = new Participante("Sofia", "Rached", 44122180);
-//		RegistroInscripcion registrar1 = new BaseRegistrarInscripcion("jdbc:mysql://127.0.0.1/poo_tp2-3","root", "");
-		RegistroInscripcion registrar1 = new FakeRegistroInscripcion();
-		Concurso concursoTecno1 = new Concurso("Tecnología", fecha11, fecha21, 1, registrar1);
-		concursoTecno1.inscribirParticipante(participante11);
-
-		System.out.println("EN MAILTRAP");
-
-		String fechaF4 = "2023-03-30";
-
-		LocalDate fecha0 = LocalDate.now();
-		LocalDate fecha5 = LocalDate.parse(fechaF4);
-		Participante participante4 = new Participante("Sofia", "Rached", 44122180);
-		Mandar notificar = new MandarMail("from@example.com", "tom@example.com", "b78c9f4878db7f", "b4f74a52b601e4",
-				"sandbox.smtp.mailtrap.io");
-
-//		Mandar notificar = new FakeMandarMail(("from@example.com", "tom@example.com", "b78c9f4878db7f", "b4f74a52b601e4",
-//		"sandbox.smtp.mailtrap.io");
-		Concurso concursoTecno10 = new Concurso("Tecnología", fecha0, fecha5, 1, notificar);
-
-		concursoTecno10.inscribirParticipante(participante4);
 	}
 }

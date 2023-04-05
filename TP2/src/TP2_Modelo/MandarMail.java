@@ -28,7 +28,7 @@ public class MandarMail implements Mandar {
 		this.host = Objects.requireNonNull(host);
 	}
 
-	public void mandar(String titulo, String mensaje) {
+	private void mandar(String titulo, String mensaje) {
 
 		String de = "jakartafrom@example.com";
 
@@ -72,12 +72,7 @@ public class MandarMail implements Mandar {
 
 	@Override
 	public void notificacionConcurso(String titulo, String msj) {
-
-	}
-
-	@Override
-	public Boolean estaEnviado() {
-		return null;
+		mandar(titulo, msj);
 	}
 
 }
