@@ -2,17 +2,23 @@ package TP2_Test;
 
 import java.util.Objects;
 
-public class FakeMandarMail {
-	private String destinatario;
-	private String asunto;
-	private String mensaje;
-	public boolean enviado;
+import TP2_Modelo.Mandar;
 
-	public FakeMandarMail(String destinatario, String asunto, String mensaje) {
-		this.destinatario = Objects.requireNonNull(destinatario);
-		this.asunto = Objects.requireNonNull(asunto);
-		this.mensaje = Objects.requireNonNull(mensaje);
+public class FakeMandarMail implements Mandar {
+	private String emisor;
+	private String receptor;
+	private String user;
+	private String password;
+	private String host;
+	boolean enviado;
 
+	public FakeMandarMail(String emisor, String receptor, String usuario, String contra, String host) {
+
+		this.emisor = Objects.requireNonNull(emisor);
+		this.receptor = Objects.requireNonNull(receptor);
+		this.user = Objects.requireNonNull(usuario);
+		this.password = Objects.requireNonNull(contra);
+		this.host = Objects.requireNonNull(host);
 	}
 
 	public void notificarMail(String titulo, String msj) {
@@ -20,8 +26,13 @@ public class FakeMandarMail {
 
 	}
 
-	public Boolean isEnviado() {
+	public Boolean estaEnviado() {
 		return enviado;
+	}
+
+	@Override
+	public void notificacionConcurso(String titulo, String msj) {
+		this.enviado = true;
 	}
 
 }

@@ -10,9 +10,10 @@ public class Concurso {
 	private LocalDate fechaHasta;
 	private ArrayList<Participante> listParticipante = new ArrayList<Participante>();
 	RegistroInscripcion registroInscipcion;
-	MandarMail mandarMail;
+	Mandar mandarMail;
 	private String correo = "msofiarached@gmail.com";
 	public int id;
+	private boolean inscripto;
 
 	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta, int id, RegistroInscripcion registro) {
 		this.nombreConcurso = nombre;
@@ -22,7 +23,7 @@ public class Concurso {
 		this.registroInscipcion = registro;
 	}
 
-	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta, int id, MandarMail mail) {
+	public Concurso(String nombre, LocalDate fechaDesde, LocalDate fechaHasta, int id, Mandar mail) {
 		this.nombreConcurso = nombre;
 		this.fechaDesde = fechaDesde;
 		this.fechaHasta = fechaHasta;
@@ -52,12 +53,13 @@ public class Concurso {
 			participante.sumarPuntos();
 		}
 		if (sePuedeInscribir(participante)) {
+			this.inscripto = true;
 			this.agregarParticipante(participante);
 		}
 
-		// this.registroInscipcion.registrar(LocalDate.now(), participante.obtenerId(),
-		// this.obtenerId());
-		this.mandarMail.mandar(correo, nombreConcurso, nombreConcurso);
+		this.registroInscipcion.registrar(LocalDate.now(), participante.obtenerId(), this.obtenerId());
+		this.mandarMail.notificacionConcurso("Concurso:" + this.obtenerId(),
+				"Se cargo el participante " + participante.obtenerId() + " en la fecha " + LocalDate.now());
 
 	}
 

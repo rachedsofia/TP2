@@ -40,9 +40,11 @@ public class Main {
 		LocalDate fecha0 = LocalDate.now();
 		LocalDate fecha5 = LocalDate.parse(fechaF4);
 		Participante participante4 = new Participante("Sofia", "Rached", 44122180);
-		MandarMail notificar = new MandarMail("from@example.com", "tom@example.com", "b78c9f4878db7f");
+		Mandar notificar = new MandarMail("from@example.com", "tom@example.com", "b78c9f4878db7f", "b4f74a52b601e4",
+				"sandbox.smtp.mailtrap.io");
 
-//		FakeMandarMail notificar = new FakeMandarMail("from@example.com", "tom@example.com", "b78c9f4878db7f");
+//		Mandar notificar = new FakeMandarMail(("from@example.com", "tom@example.com", "b78c9f4878db7f", "b4f74a52b601e4",
+//		"sandbox.smtp.mailtrap.io");
 		Concurso concursoTecno10 = new Concurso("Tecnología", fecha0, fecha5, 1, notificar);
 
 		concursoTecno10.inscribirParticipante(participante4);
