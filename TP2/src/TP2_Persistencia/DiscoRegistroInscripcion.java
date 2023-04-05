@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import TP2_Modelo.RegistroInscripcion;
+import tp2_modelo.RegistroInscripcion;
 
 public class DiscoRegistroInscripcion implements RegistroInscripcion {
 

@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.time.LocalDate;
 
-import TP2_Modelo.RegistroInscripcion;
+import tp2_modelo.RegistroInscripcion;
 
 public class BDRegistroInscripcion implements RegistroInscripcion {
 	String url; 

@@ -1,12 +1,19 @@
-package TP2_Modelo;
+package tp2_test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 
-import TP2_Persistencia.BDRegistroInscripcion;
-import TP2_Test.FakeMandarMail;
+import org.junit.jupiter.api.Test;
 
-public class Main {
-	public static void main(String[] args) {
+import TP2_Persistencia.BDRegistroInscripcion;
+import tp2_modelo.Concurso;
+import tp2_modelo.Participante;
+import tp2_modelo.RegistroInscripcion;
+
+public class InscripcionTest {
+	@Test
+	public void ConcursoPoderJudicial() {
 		LocalDate fechaC = LocalDate.now();
 		LocalDate fechaD = LocalDate.of(2023, 4, 25);
 
@@ -26,10 +33,13 @@ public class Main {
 //				"sandbox.smtp.mailtrap.io");
 		FakeMandarMail notificar = new FakeMandarMail("from@example.com", "tom@example.com", "b78c9f4878db7f",
 				"b4f74a52b601e4", "sandbox.smtp.mailtrap.io");
+
+		Participante participanteC = new Participante("Sofia", "Rached", 44122180);
 		Concurso concursoPoderJudicialA = new Concurso("Poder Judicial", fechaC, fechaD, 1, registar, notificar);
 
-		Participante participanteC = new Participante("Sofia", "Rached", 44122980);
 		concursoPoderJudicialA.inscribirParticipante(participanteC);
+
+		assertEquals(true, notificar.estaEnviado());
 
 	}
 }

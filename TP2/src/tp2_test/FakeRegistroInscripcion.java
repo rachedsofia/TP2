@@ -1,8 +1,8 @@
-package TP2_Test;
+package tp2_test;
 
 import java.time.LocalDate;
 
-import TP2_Modelo.RegistroInscripcion;
+import tp2_modelo.RegistroInscripcion;
 
 public class FakeRegistroInscripcion implements RegistroInscripcion {
 	// variables para comparar los valores
@@ -15,12 +15,11 @@ public class FakeRegistroInscripcion implements RegistroInscripcion {
 
 	}
 
-	public boolean comparar(int id_participante, int id_concurso) {
+	boolean comparar(int id_participante, int id_concurso) {
 		if (idParti == id_participante && idConcu == id_concurso) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 }

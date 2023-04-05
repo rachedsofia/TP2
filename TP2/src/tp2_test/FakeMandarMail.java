@@ -1,8 +1,8 @@
-package TP2_Test;
+package tp2_test;
 
 import java.util.Objects;
 
-import TP2_Modelo.Mandar;
+import tp2_modelo.Mandar;
 
 public class FakeMandarMail implements Mandar {
 	private String emisor;
@@ -13,7 +13,6 @@ public class FakeMandarMail implements Mandar {
 	boolean enviado;
 
 	public FakeMandarMail(String emisor, String receptor, String usuario, String contra, String host) {
-
 		this.emisor = Objects.requireNonNull(emisor);
 		this.receptor = Objects.requireNonNull(receptor);
 		this.user = Objects.requireNonNull(usuario);
@@ -21,12 +20,7 @@ public class FakeMandarMail implements Mandar {
 		this.host = Objects.requireNonNull(host);
 	}
 
-	public void notificarMail(String titulo, String msj) {
-		enviado = true;
-
-	}
-
-	public Boolean estaEnviado() {
+	Boolean estaEnviado() {
 		return enviado;
 	}
 
